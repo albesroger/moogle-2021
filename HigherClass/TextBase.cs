@@ -42,7 +42,7 @@ public class ClassBase
     private string[] RemplasaSignos(string TextoOrigen)        //remplasar los signos que no me interesan
     {
 
-        return TextoOrigen
+        return TextoOrigen.ToLower()
                 .Replace('\n', ' ')
                 .Replace('_', ' ')
                 .Replace(',', ' ')

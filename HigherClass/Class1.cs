@@ -13,7 +13,7 @@ public class Documento : ClassBase                       //todo lo que tieneque 
         try
         {
 
-            text = leer.ReadToEnd();                      //lee todo el documento y lo devuelve como un string
+            text = leer.ReadToEnd().ToLower();                      //lee todo el documento y lo devuelve como un string
 
         }
         catch (EndOfStreamException error)
