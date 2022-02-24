@@ -1,20 +1,30 @@
-﻿namespace MoogleEngine;
+﻿
+using System.IO;
+using HigherClass;
+using MotorBusque;
+namespace MoogleEngine;
 
 
 public static class Moogle
 {
     public static SearchResult Query(string query)
     {
-        // Modifique este método para responder a la búsqueda
+        ClassBase cb = new ClassBase(query);
+        string[] archivos = Directory.GetFiles("../Content");
+        Documento[] docs = new Documento[archivos.Length];
 
-        SearchItem[] items = new SearchItem[3]
+        for (int i = 0; i < archivos.Length; i++)
         {
-            new SearchItem("Q bola matador", "Bonito, apuesto, todo lo demas x su puesto", 0.9f),
-            new SearchItem("Hello World", "Lorem ipsum dolor sit amet", 0.5f),
-            new SearchItem("Hello World", "Lorem ipsum dolor sit amet", 0.1f),
-        };
+            docs[i] = new Documento(archivos[i]);
+        }
 
-        return new SearchResult(items, query);
+        Class2 vocabulario = new Class2(docs);
+        SearchItem[] si = new SearchItem[docs.Length];
+        for (int i = 0; i < docs.Length; i++)
+        {
+            si[i] = new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i));
+        }
+        return new SearchResult(si);
     }
 
 }

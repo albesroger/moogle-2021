@@ -2,10 +2,17 @@ namespace HigherClass;
 public class ClassBase
 {
     Dictionary<string, int> diccionario;
-    protected ClassBase()
+    public ClassBase()
     {
 
         diccionario = new Dictionary<string, int>();            //inicio un diccionario nuevo
+
+    }
+
+    public ClassBase(string texto)
+    {
+        diccionario = new Dictionary<string, int>();
+        LLenarArrays(texto);
 
     }
     protected void LLenarArrays(string texto)                   //rellena los terminos con la palabra y su frecuencia absoluta
