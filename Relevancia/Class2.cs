@@ -48,25 +48,32 @@ public class Class2
             }
         }
     }
+
+
     public string GetSuggestion(string term)
     {
         double distance = Double.MaxValue;
         string suggestion = string.Empty;
-
+        string suggestions = string.Empty;
         foreach (var doc in term.Split(" "))
         {
             foreach (var word in Dicc1.Keys)
             {
-                var dist = LevenshteinDistance(word, term);
+                var dist = LevenshteinDistance(word, doc);
                 if (distance > dist)
                 {
                     distance = dist;
                     suggestion = word;
                 }
             }
+            distance = double.MaxValue;
+            suggestions += suggestion;
+            suggestions += " ";
+
         }
-        return suggestion;
+        return suggestions;
     }
+
 
     private int LevenshteinDistance(string s, string t)
     {
@@ -105,20 +112,22 @@ public class Class2
         return d[m, n];
 
     }
+
     public float[] VectoriQuiery(ClassBase PalabraRecivi)
     {
 
         float[] watusi = new float[Dicc1.Count];
         int index = 0;
 
-        foreach (var aux in Dicc1.Keys)              // calcula TF-IDF
+        foreach (var aux in Dicc1.Keys)                                  // calcula TF-IDF
         {
             watusi[index++] = PalabraRecivi.DevuelTF(aux) * (float)Math.Log10((float)tamanno / (float)Dicc1[aux]);
         }
         return watusi;
 
     }
-    public float ObtenerScore(ClassBase palabr_score, int puntacion)
+
+    public float ObtenerScore(ClassBase palabr_score, int puntacion)         //da el peso de cada palabra en los documentos(score)
     {
 
         float peso = 0f;

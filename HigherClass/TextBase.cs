@@ -72,10 +72,10 @@ public class ClassBase
         return 0;                                       //en otro caso devuelvo 0
 
     }
-    public IEnumerable<string> DevuelIter()             //devuelve un iterador que apunta a los terminos del texto  (cambiar)
+    public IEnumerable<string> DevuelIter()             //devuelve un iterador que apunta a los terminos del texto  
     {
 
-        return this.diccionario.Keys;                   // devuelve las llaves que hay en el diccionario  (cambiar)
+        return this.diccionario.Keys;                   // devuelve las llaves que hay en el diccionario  
 
     }
 
