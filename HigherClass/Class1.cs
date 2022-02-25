@@ -23,7 +23,7 @@ public class Documento : ClassBase                       //todo lo que tieneque 
 
         }
 
-        LLenarArrays(text);                                //llenar los campos
+        LLenar_Arrays(text);                                //llenar los campos
 
         this.name = route.Split("/")[2];                   //le da a las rutas la forma ../Content/arch1.txt
         this.snippet = text.Length >= 100 ? text.Substring(0, 100) : text;            //si el texto tiene mas de 100 terminos devuelve solo esta cantidad sino me devuelve los que tengan

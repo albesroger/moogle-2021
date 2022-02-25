@@ -1,12 +1,12 @@
 using System;
 using Microsoft.VisualBasic.CompilerServices;
 namespace HigherClass;
-public class Busq : ClassBase              //clase relacionada con la busqueda
+public class Busqueda : ClassBase              //clase relacionada con la busqueda
 {
-    public Busq(string busq) : base()      //constructor de la clase busqueda 
+    public Busqueda(string busq) : base()      //constructor de la clase busqueda 
     {
 
-        this.LLenarArrays(busq);
+        this.LLenar_Arrays(busq);
 
     }
 }

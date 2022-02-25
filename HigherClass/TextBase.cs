@@ -12,10 +12,10 @@ public class ClassBase
     public ClassBase(string texto)
     {
         diccionario = new Dictionary<string, int>();
-        LLenarArrays(texto);
+        LLenar_Arrays(texto);
 
     }
-    protected void LLenarArrays(string texto)                   //rellena los terminos con la palabra y su frecuencia absoluta
+    protected void LLenar_Arrays(string texto)                   //rellena los terminos con la palabra y su frecuencia absoluta
     {
 
         var auxiliar = RemplasaSignos(texto);                   // var >> toma el tipo de valor que se le pase

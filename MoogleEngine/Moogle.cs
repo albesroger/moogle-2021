@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+using System;
 using System.IO;
 using HigherClass;
 using MotorBusque;
@@ -9,6 +11,9 @@ public static class Moogle
 {
     public static SearchResult Query(string query)
     {
+        Stopwatch Cronom = new Stopwatch();
+        Cronom.Start();
+
         ClassBase cb = new ClassBase(query);
         string[] archivos = Directory.GetFiles("../Content");
         Documento[] docs = new Documento[archivos.Length];
@@ -24,7 +29,15 @@ public static class Moogle
         {
             si[i] = new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i));
         }
-        return new SearchResult(si);
+
+        Cronom.Stop();
+        Console.WriteLine("Tiempo empleado " + Cronom.ElapsedMilliseconds + "ms");
+
+        return new SearchResult(si, vocabulario.GetSuggestion(query));
+
     }
+
+
+
 
 }
