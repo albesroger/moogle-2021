@@ -30,6 +30,7 @@ public class Documento : ClassBase                       //todo lo que tieneque 
         this.route = route;
 
     }
+
     public string Name             //devuelve el nombre
     {
         get
@@ -37,6 +38,7 @@ public class Documento : ClassBase                       //todo lo que tieneque 
             return name;
         }
     }
+    
     public string Snippet
     {
         get

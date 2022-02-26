@@ -9,6 +9,7 @@ public class Class2
     Dictionary<string, int> Dicc1;
     float[,] MatrisSistem;
     int tamanno;
+
     public Class2(Documento[] docu)
     {
 
@@ -50,7 +51,7 @@ public class Class2
     }
 
 
-    public string GetSuggestion(string term)
+    public string GetSuggestion(string term)                                 //da sugerencias a palabras mal escritas
     {
         double distance = Double.MaxValue;
         string suggestion = string.Empty;
@@ -75,7 +76,7 @@ public class Class2
     }
 
 
-    private int LevenshteinDistance(string s, string t)
+    private int LevenshteinDistance(string s, string t)                      //algoritmo de LevenshteinDistance        
     {
 
         // d es una tabla con m+1 renglones y n+1 columnas

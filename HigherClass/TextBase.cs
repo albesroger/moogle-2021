@@ -15,7 +15,8 @@ public class ClassBase
         LLenar_Arrays(texto);
 
     }
-    protected void LLenar_Arrays(string texto)                   //rellena los terminos con la palabra y su frecuencia absoluta
+
+    protected void LLenar_Arrays(string texto)                  //rellena los terminos con la palabra y su frecuencia absoluta
     {
 
         var auxiliar = RemplasaSignos(texto);                   // var >> toma el tipo de valor que se le pase
@@ -39,7 +40,7 @@ public class ClassBase
         }
 
     }
-    private string[] RemplasaSignos(string TextoOrigen)        //remplasar los signos que no me interesan
+    private string[] RemplasaSignos(string TextoOrigen)         //remplasar los signos que no me interesan
     {
 
         return TextoOrigen.ToLower()
@@ -54,7 +55,8 @@ public class ClassBase
                 .Split(" ");
 
     }
-    public int CantTerminos()                           //retorna la candidad de elementos del documento
+
+    public int CantTerminos()                                   //retorna la candidad de elementos del documento
     {
 
         return this.diccionario.Count;

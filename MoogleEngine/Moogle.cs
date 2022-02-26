@@ -11,7 +11,7 @@ public static class Moogle
 {
     public static SearchResult Query(string query)
     {
-        Stopwatch Cronom = new Stopwatch();
+        Stopwatch Cronom = new Stopwatch();                //inicio cronometro para medir el tiempo de busqueda
         Cronom.Start();
 
         ClassBase cb = new ClassBase(query);
@@ -30,7 +30,7 @@ public static class Moogle
             si[i] = new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i));
         }
 
-        Cronom.Stop();
+        Cronom.Stop();             //se detiene el cronometro
         Console.WriteLine("Tiempo empleado " + Cronom.ElapsedMilliseconds + "ms");
 
         return new SearchResult(si, vocabulario.GetSuggestion(query));
