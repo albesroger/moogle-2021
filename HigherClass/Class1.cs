@@ -31,6 +31,19 @@ public class Documento : ClassBase                       //todo lo que tieneque 
 
     }
 
+    public bool ContienePalabras(string[] palabra)   //-----------------------------------   recibe un array de palablas y devuelve
+    {                                                                                     // true si las tiene todas, sino, false                                                                    
+        if (palabra == null || palabra.Length == 0) return true;
+        foreach (var a in palabra)
+        {
+            if (this.DevuelTF(a) == 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }                                                //--------------------------------------             
+
     public string Name             //devuelve el nombre
     {
         get
@@ -38,7 +51,7 @@ public class Documento : ClassBase                       //todo lo que tieneque 
             return name;
         }
     }
-    
+
     public string Snippet
     {
         get

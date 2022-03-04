@@ -1,7 +1,9 @@
 namespace HigherClass;
+
 public class ClassBase
 {
     Dictionary<string, int> diccionario;
+    List<string>[] operadores;
     public ClassBase()
     {
 
@@ -9,11 +11,68 @@ public class ClassBase
 
     }
 
+
+    public string[] PalabrasOperador(char c)
+    {
+        switch (c)
+        {
+            case '^':
+                return operadores[0].ToArray();
+                break;
+
+            default:
+                return null;
+                break;
+
+        }
+
+    }
+
     public ClassBase(string texto)
     {
         diccionario = new Dictionary<string, int>();
-        LLenar_Arrays(texto);
+        LLenar_Arrays(CargarOperadores(texto));
 
+    }
+
+    private string CargarOperadores(string query)
+    {
+        string nuevaquery = "";
+        operadores = new List<string>[4];
+        for (int i = 0; i < 4; i++)
+        {
+
+            operadores[i] = new List<string>();
+
+        }
+
+        for (int i = 0; i < query.Length; i++)
+        {
+            if (query[i] == '^')
+            {
+                operadores[0].Add(BuscaPalabra(i, query));
+            }
+            else
+            {
+                nuevaquery += query[i];
+            }
+        }
+        return nuevaquery;
+
+    }
+
+
+    private string BuscaPalabra(int pos, string text)
+    {
+        string palabra = "";
+
+        for (int i = pos; i < text.Length; i++)
+        {
+            if (text[i] == ' ') break;
+
+            palabra += text[i];
+        }
+        return palabra;
     }
 
     protected void LLenar_Arrays(string texto)                  //rellena los terminos con la palabra y su frecuencia absoluta
