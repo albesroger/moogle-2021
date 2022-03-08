@@ -24,7 +24,7 @@ public class SearchResult
 
     public IEnumerable<SearchItem> Items()
     {
-        return this.items.Where(elem => elem.Score != 0);
+        return this.items;
     }
 
     public int Count { get { return this.items.Length; } }

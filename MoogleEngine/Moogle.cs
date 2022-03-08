@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Diagnostics;
 using System;
 using System.IO;
@@ -24,17 +25,17 @@ public static class Moogle
         }
 
         Class2 vocabulario = new Class2(docs);
-        SearchItem[] si = new SearchItem[docs.Length];
+        List<SearchItem> si = new List<SearchItem>();
         for (int i = 0; i < docs.Length; i++)
         {
-            if (!docs[i].ContienePalabras(cb.PalabrasOperador('^'))) continue;
-            si[i] = new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i));
+            if (cb.PalabrasOperador('^').Length > 0 && !docs[i].ContienePalabras(cb.PalabrasOperador('^'))) continue;
+            if (cb.PalabrasOperador('!').Length > 0 && docs[i].ContienePalabras(cb.PalabrasOperador('!'))) continue;
+            si.Add(new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i) / docs[i].DistanciaMinima(cb.PalabrasOperador('~'))));
         }
-
         Cronom.Stop();             //se detiene el cronometro
         Console.WriteLine("Tiempo empleado " + Cronom.ElapsedMilliseconds + "ms");
 
-        return new SearchResult(si, vocabulario.GetSuggestion(query));
+        return new SearchResult(si.ToArray(), vocabulario.GetSuggestion(query));
 
     }
 

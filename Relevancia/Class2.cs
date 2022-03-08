@@ -50,7 +50,10 @@ public class Class2
         }
     }
 
-
+    protected void SetTF(string word)
+    {
+        Dicc1[word] *= 2;
+    }
     public string GetSuggestion(string term)                                 //da sugerencias a palabras mal escritas
     {
         double distance = Double.MaxValue;

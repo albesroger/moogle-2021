@@ -1,4 +1,6 @@
-﻿namespace HigherClass;
+﻿using System;
+using System.IO;
+namespace HigherClass;
 public class Documento : ClassBase                       //todo lo que tieneque ver con los documentos
 {
     private string name;
@@ -43,6 +45,24 @@ public class Documento : ClassBase                       //todo lo que tieneque 
         }
         return true;
     }                                                //--------------------------------------             
+
+    public int DistanciaMinima(string[] palabras)
+    {
+        if (palabras == null || palabras.Length == 0) return 1;
+
+        StreamReader sr = new StreamReader(route);
+        string[] lectura = RemplasaSignos(sr.ReadToEnd());
+
+        int distancia = 0;
+        for (int i = 0; i < lectura.Length; i++)
+        {
+            if (Array.IndexOf(palabras, lectura[i]) != -1)
+            {
+                distancia += i;
+            }
+        }
+        return (distancia / lectura.Length) + 1;
+    }
 
     public string Name             //devuelve el nombre
     {

@@ -19,7 +19,15 @@ public class ClassBase
             case '^':
                 return operadores[0].ToArray();
                 break;
-
+            case '!':
+                return operadores[1].ToArray();
+                break;
+            case '~':
+                return operadores[3].ToArray();
+                break;
+            case '*':
+                return operadores[2].ToArray();
+                break;
             default:
                 return null;
                 break;
@@ -32,6 +40,11 @@ public class ClassBase
     {
         diccionario = new Dictionary<string, int>();
         LLenar_Arrays(CargarOperadores(texto));
+        foreach (var a in PalabrasOperador('*'))
+        {
+
+            diccionario[a] *= 2;
+        }
 
     }
 
@@ -45,12 +58,27 @@ public class ClassBase
             operadores[i] = new List<string>();
 
         }
-
+        int posicionPalabra = 0;
         for (int i = 0; i < query.Length; i++)
         {
+            if (query[i] == ' ') posicionPalabra = i;
             if (query[i] == '^')
             {
-                operadores[0].Add(BuscaPalabra(i, query));
+                operadores[0].Add(BuscaPalabra(i + 1, query));
+            }
+            if (query[i] == '!')
+            {
+                operadores[1].Add(BuscaPalabra(i + 1, query));
+            }
+            if (query[i] == '*')
+            {
+                while (i < query.Length && query[i] == '*') i++;
+                operadores[2].Add(BuscaPalabra(i, query));
+            }
+            if (query[i] == '~')
+            {
+                operadores[3].Add(BuscaPalabra(i + 1, query));
+                operadores[3].Add(query.Substring(posicionPalabra, i));
             }
             else
             {
@@ -99,7 +127,7 @@ public class ClassBase
         }
 
     }
-    private string[] RemplasaSignos(string TextoOrigen)         //remplasar los signos que no me interesan
+    protected string[] RemplasaSignos(string TextoOrigen)         //remplasar los signos que no me interesan
     {
 
         return TextoOrigen.ToLower()
