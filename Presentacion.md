@@ -1,12 +1,16 @@
-Moogle! es una aplicación desarrollado con tecnología .NET Core 6.0 utilizando el lenguaje de programación
-C#. Es un motor de búsqueda cuya finalidad, como su nombre lo indica, es buscar, pero de forma inteligente un
-texto o una frase dada en un conjunto de documentos. El mismo cuenta con una interfaz gráfica en la cualpodemos apreciar el logotipo y el nombre de la aplicación, así como la barra de búsqueda que es donde debemos introducir la palabra o frase que deseamos buscar; y junto a esta el botón de "buscar".
+## Moogle! es una aplicación desarrollado con tecnología .NET Core 6.0 utilizando como lenguaje de programación C#. Es un motor de búsqueda cuya finalidad, como su nombre lo indica, es buscar, pero de forma inteligente un texto o una frase dada en un conjunto de documentos. El mismo cuenta con una interfaz gráfica en la cual podemos apreciar el logotipo y el nombre de la aplicación, así como la barra de búsqueda que es donde debemos introducir la palabra o frase que deseamos buscar; y junto a esta el botón de "buscar".
 
-Para realizar esta función aplica un sistema de recuperación de información. En este se utiliza un modelo vectorial, crea la matriz de un espacio vectorial donde cada vector representa un término del documento. A estos se les determina el peso "TF-IDF", luego al "query" también se le realiza esta operación y se calcula la distancia coseno entre los dos vectores, y esta sería igual al "score" de cada docuemnto.
+## Para realizar esta función utiliza el sistema de recuperación de la información. En este se utiliza el modelo vectorial, este crea la matriz de un espacio vectorial donde cada vector representa un término del documento. A estos se les determina el peso "TF-IDF", luego al "query" también se le realiza esta operación y se calcula la distancia coseno entre los dos vectores, y esta sería igual al "score" de cada docuemnto.
 
-Tambien se hace uso del algoritmo de "LevenshteinDistance" el cuan determina la cantidad de de operaciones(agrgar, quitar o cambiar) que se deben de ralizar para que dos palabras sean iguales, esto se puede utilizar entre otras cosas, para eliminar las faltas de otrografia que pueda tener el usuario
+## En esta aplicación tambien se hace uso del algoritmo de "LevenshteinDistance"; este tiene como función realizar una cierta cantidad de operaciones (agrgar, quitar o cambiar) a una palabra con el fin de transformarla en otra. Este algoritmo tiene participación en las sugerencias, ya que se van a mostrar las palabras que menos operaciones necesite para transformarse en la que esta buscando el usuario; esto se puede utilizar también para eliminar las faltas de otrografia que pueda tener la persona que utilice el buscador.
 
-Otra de las principales características de este motor de búqueda es la "Suggestion" la cual en el caso de que el usuario escriba mal alguna palabra o haya tenido alguna falta de ortografía hace sugerencias de palabras o frases que quisaz el usuario quería decir.
+## Otra de las principales características de este motor de búqueda es la "Suggestion" la cual en el caso de que el usuario escriba mal alguna palabra o haya tenido alguna falta de ortografía hace sugerencias de palabras o frases que quisáz el usuario quería decir.
 
-!!!EJEMPLO!!!
+!!EJEMPLO!!!
 ![](Suggestion.png)
+
+# Flujo de datos
+
+## al iniciar el servidos los documentos son leidos y modelados como objetos d tipo Document , luego so utilizados para crear la instancia de vocabullary donde se guardadn todas las palabras y se calculan los pesos `tf-idf` acabando asi con una matriz del sistema donde cada fila es el vector de un documento . dichos vectores son n dimensionales donde n es la cantidad de terminos totales en el cospus (cuerpo de documentos) cada componente de estos vectores tendra los pesos td-idf asociados a cada termino . Cuando se efectua una consulta en la interfaz grafica , esa informacion pasa a MoogeServer donde se modela esta informacion como un objeto de tipo ClassBase , durante esa modelacion se obtienen los operadores y sus palabras afectadas , se calcula al igual que en el caso de los documentos sus pesos `tf-idf` y toda esta informacion pasa a la instancia de vocabullary donde se utilizan para obtener los resultados de la busqueda , a traves del producto punto entre vectores se obtiene el score de relevancia para cada documento respecto al query , y luego esta busqueda es filtrada a traves de los operadores de busqueda , si alguna de las palabras de la busqueda no fue posible encontrarlas durante este proceso , utilizando la distancia de levegstein se computa la palabra de entre los documentos mas cercana a la que se escribio incorrectamente y se envia de vuelta al usuario en forma de suggestion
+
+!

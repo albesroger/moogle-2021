@@ -15,7 +15,8 @@ public class Documento : ClassBase                       //todo lo que tieneque 
         try
         {
 
-            text = leer.ReadToEnd().ToLower();                      //lee todo el documento y lo devuelve como un string
+            text = leer.ReadToEnd().ToLower();     //lee todo el documento y lo devuelve como un string
+            leer.Close(); //cierro el stream despues de leer el archivo
 
         }
         catch (EndOfStreamException error)
@@ -46,12 +47,13 @@ public class Documento : ClassBase                       //todo lo que tieneque 
         return true;
     }                                                //--------------------------------------             
 
-    public int DistanciaMinima(string[] palabras)
+    public int DistanciaMinima(string[] palabras)  //lee las palabras par a par entre los documentos
     {
         if (palabras == null || palabras.Length == 0) return 1;
 
         StreamReader sr = new StreamReader(route);
         string[] lectura = RemplasaSignos(sr.ReadToEnd());
+        sr.Close();
 
         int distancia = 0;
         for (int i = 0; i < lectura.Length; i++)

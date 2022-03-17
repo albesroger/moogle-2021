@@ -36,7 +36,7 @@ public class ClassBase
 
     }
 
-    public ClassBase(string texto)
+    public ClassBase(string texto)       //constructor de la clase , inicializa los operadores
     {
         diccionario = new Dictionary<string, int>();
         LLenar_Arrays(CargarOperadores(texto));
@@ -90,7 +90,7 @@ public class ClassBase
     }
 
 
-    private string BuscaPalabra(int pos, string text)
+    private string BuscaPalabra(int pos, string text)//busca la siguiente palabra desde la posicion pos
     {
         string palabra = "";
 
