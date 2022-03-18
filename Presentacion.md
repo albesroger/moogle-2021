@@ -9,8 +9,10 @@
 
 ## Distancia de `Levenshtein` es el número miínimo de operaciones requeridas para transformar una cadena de caracteres en otra, estas operaciones son inserción, eliminación o sustitución de un caracter.
 
-## Bibliografía
+## BIBLIOGRAFIA
 
-Google
-Librería .NET
-Algoritmo `Levenshtein` ----- Wikipedia
+## Google
+
+## Librería .NET
+
+## Algoritmo `Levenshtein` ----- Wikipedia
