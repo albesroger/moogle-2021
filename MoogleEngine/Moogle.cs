@@ -32,6 +32,7 @@ public static class Moogle
             if (cb.PalabrasOperador('!').Length > 0 && docs[i].ContienePalabras(cb.PalabrasOperador('!'))) continue;
             si.Add(new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i) / docs[i].DistanciaMinima(cb.PalabrasOperador('~'))));
         }
+
         Cronom.Stop();             //se detiene el cronometro
         Console.WriteLine("Tiempo empleado " + Cronom.ElapsedMilliseconds + "ms");
 
