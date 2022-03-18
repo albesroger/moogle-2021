@@ -8,3 +8,7 @@
 ## `Tf-idf` expresa cuan relevante es una palablra para un documento en una coleccion. El valor `Tf-idf` aumenta proporcionalmente al numero de veces que una palabra aparece en el documento, pero es compensada por la frecuencia de la palabra en la coleccion de documentos, lo que permite manejar el hecho de que algunas palabras co mas relevantes que otras.
 
 ## Distancia de `Levenshtein` es el numero minimo de operaciones requeridas para transformar una cadena de caracteres en otra, estas operaciones son insercion, eliminacion o sustitucion de un caracter.
+
+## Bibliografia
+
+Algoritmo `Levenshtein` ----- Wikipedia
