@@ -15,8 +15,8 @@ public class Documento : ClassBase                       //todo lo que tieneque 
         try
         {
 
-            text = leer.ReadToEnd().ToLower();     //lee todo el documento y lo devuelve como un string
-            leer.Close(); //cierro el stream despues de leer el archivo
+            text = leer.ReadToEnd().ToLower();           //lee todo el documento y lo devuelve como un string
+            leer.Close();                                //cierro el stream despues de leer el archivo
 
         }
         catch (EndOfStreamException error)
@@ -34,8 +34,8 @@ public class Documento : ClassBase                       //todo lo que tieneque 
 
     }
 
-    public bool ContienePalabras(string[] palabra)   //-----------------------------------   recibe un array de palablas y devuelve
-    {                                                                                     // true si las tiene todas, sino, false                                                                    
+    public bool ContienePalabras(string[] palabra)         //-----------------------------------   recibe un array de palablas y devuelve
+    {                                                                                           // true si las tiene todas, sino, false                                                                    
         if (palabra == null || palabra.Length == 0) return true;
         foreach (var a in palabra)
         {
@@ -45,9 +45,9 @@ public class Documento : ClassBase                       //todo lo que tieneque 
             }
         }
         return true;
-    }                                                //--------------------------------------             
+    }                                                      //--------------------------------------             
 
-    public int DistanciaMinima(string[] palabras)  //lee las palabras par a par entre los documentos
+    public int DistanciaMinima(string[] palabras)          //lee las palabras par a par entre los documentos
     {
         if (palabras == null || palabras.Length == 0) return 1;
 

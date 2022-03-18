@@ -19,7 +19,7 @@ public class Class2
         {
             foreach (var item in docu[i].DevuelIter())
             {
-                if (this.Dicc1.ContainsKey(item))        //si la tiene le sumo 1 a su TF(frecuencia absoluta)
+                if (this.Dicc1.ContainsKey(item))              //si la tiene le sumo 1 a su TF(frecuencia absoluta)
                 {
 
                     this.Dicc1[item]++;
@@ -43,7 +43,7 @@ public class Class2
         for (int i = 0; i < document.Length; i++)
         {
             int index = 0;
-            foreach (var aux in Dicc1.Keys)              // calcula TF-IDF
+            foreach (var aux in Dicc1.Keys)                    // calcula TF-IDF
             {
                 MatrisSistem[i, index++] = document[i].DevuelTF(aux) * (float)Math.Log10((float)document.Length / (float)Dicc1[aux]);
             }
@@ -97,15 +97,15 @@ public class Class2
         for (int j = 0; j <= n; d[0, j] = j++) ;
 
 
-        /// recorre la matriz llenando cada unos de los pesos.
-        /// i columnas, j renglones
+        // recorre la matriz llenando cada unos de los pesos.
+        // i columnas, j renglones
         for (int i = 1; i <= m; i++)
         {
             // recorre para j
             for (int j = 1; j <= n; j++)
             {
-                /// si son iguales en posiciones equidistantes el peso es 0
-                /// de lo contrario el peso suma a uno.
+                // si son iguales en posiciones equidistantes el peso es 0
+                // de lo contrario el peso suma a uno.
                 costo = (s[i - 1] == t[j - 1]) ? 0 : 1;
                 d[i, j] = Math.Min(Math.Min(d[i - 1, j] + 1,              //Eliminacion
                             d[i, j - 1] + 1),                             //Insercion 
@@ -123,7 +123,7 @@ public class Class2
         float[] watusi = new float[Dicc1.Count];
         int index = 0;
 
-        foreach (var aux in Dicc1.Keys)                                  // calcula TF-IDF
+        foreach (var aux in Dicc1.Keys)                                       // calcula TF-IDF
         {
             watusi[index++] = PalabraRecivi.DevuelTF(aux) * (float)Math.Log10((float)tamanno / (float)Dicc1[aux]);
         }

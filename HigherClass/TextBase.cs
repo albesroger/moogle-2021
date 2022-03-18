@@ -90,7 +90,7 @@ public class ClassBase
     }
 
 
-    private string BuscaPalabra(int pos, string text)//busca la siguiente palabra desde la posicion pos
+    private string BuscaPalabra(int pos, string text)           //busca la siguiente palabra desde la posicion pos
     {
         string palabra = "";
 
