@@ -150,7 +150,7 @@ public class ClassBase
 
     }
 
-    public int DevuelTF(string palabra)                 //devuelve la frecuencia de un termino en especifo
+    public int DevuelTF(string palabra)                 //devuelve la frecuencia de un termino en especific`o
     {
         if (this.diccionario.ContainsKey(palabra))      //si lo tiene
         {

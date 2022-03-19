@@ -1,3 +1,4 @@
+using System;
 namespace MoogleEngine;
 
 public class SearchItem
@@ -14,4 +15,5 @@ public class SearchItem
     public string Snippet { get; private set; }
 
     public float Score { get; private set; }
+
 }

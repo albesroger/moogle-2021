@@ -6,9 +6,9 @@ using HigherClass;
 namespace MotorBusque;
 public class Class2
 {
-    Dictionary<string, int> Dicc1;
-    float[,] MatrisSistem;
-    int tamanno;
+    public static Dictionary<string, int> Dicc1;
+    public static float[,] MatrisSistem;
+    public static int tamanno;
 
     public Class2(Documento[] docu)
     {
@@ -19,16 +19,16 @@ public class Class2
         {
             foreach (var item in docu[i].DevuelIter())
             {
-                if (this.Dicc1.ContainsKey(item))              //si la tiene le sumo 1 a su TF(frecuencia absoluta)
+                if (Class2.Dicc1.ContainsKey(item))              //si la tiene le sumo 1 a su TF(frecuencia absoluta)
                 {
 
-                    this.Dicc1[item]++;
+                    Class2.Dicc1[item]++;
 
                 }
                 else
                 {
 
-                    this.Dicc1.Add(item, 1);                   // agrego una intancia de la palabra con TF == 1
+                    Class2.Dicc1.Add(item, 1);                   // agrego una intancia de la palabra con TF == 1
 
                 }
             }
@@ -117,7 +117,7 @@ public class Class2
 
     }
 
-    public float[] VectoriQuiery(ClassBase PalabraRecivi)
+    public static float[] VectoriQuiery(ClassBase PalabraRecivi)
     {
 
         float[] watusi = new float[Dicc1.Count];
@@ -131,13 +131,13 @@ public class Class2
 
     }
 
-    public float ObtenerScore(ClassBase palabr_score, int puntacion)         //da el peso de cada palabra en los documentos(score)
+    public static float ObtenerScore(ClassBase palabr_score, int puntacion)         // da el peso de cada palabra en los documentos(score)
     {
 
         float peso = 0f;
         float[] vector = VectoriQuiery(palabr_score);
 
-        for (int i = 0; i < Dicc1.Count; i++)
+        for (int i = 0; i < Dicc1.Count; i++)                                // distancia coseno
         {
             peso += MatrisSistem[puntacion, i] * vector[i];
         }

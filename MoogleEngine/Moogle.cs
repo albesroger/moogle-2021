@@ -30,13 +30,22 @@ public static class Moogle
         {
             if (cb.PalabrasOperador('^').Length > 0 && !docs[i].ContienePalabras(cb.PalabrasOperador('^'))) continue;
             if (cb.PalabrasOperador('!').Length > 0 && docs[i].ContienePalabras(cb.PalabrasOperador('!'))) continue;
-            si.Add(new SearchItem(docs[i].Name, docs[i].Snippet, vocabulario.ObtenerScore(cb, i) / docs[i].DistanciaMinima(cb.PalabrasOperador('~'))));
+            if (Class2.ObtenerScore(cb, i) > 0)
+            {
+
+                si.Add(new SearchItem(docs[i].Name, docs[i].Snippet, Class2.ObtenerScore(cb, i) / docs[i].DistanciaMinima(cb.PalabrasOperador('~'))));
+
+            }
+
         }
+        System.Console.WriteLine();
+
+        var sortList = si.OrderByDescending(x => x.Score);
 
         Cronom.Stop();             //se detiene el cronometro
         Console.WriteLine("Tiempo empleado " + Cronom.ElapsedMilliseconds + "ms");
 
-        return new SearchResult(si.ToArray(), vocabulario.GetSuggestion(query));
+        return new SearchResult(sortList.ToArray(), vocabulario.GetSuggestion(query));
 
     }
 
